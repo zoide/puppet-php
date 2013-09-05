@@ -39,25 +39,24 @@
 # Copyright 2012-2013 Christian "Jippi" Winther, unless otherwise noted.
 #
 class php::extension::apc::params {
-
-  $ensure   = $php::params::ensure
-  $package  = 'php5-apc'
+  $ensure = $php::params::ensure
+  $package = 'php-apc'
   $provider = undef
-  $inifile  = '/etc/php5/conf.d/20-apc.ini'
+  $inifile = '/etc/php5/conf.d/20-apc.ini'
   $settings = {
     set => {
-      '.anon/apc.enabled'           => 1,
-      '.anon/apc.cache_by_default'  => 1,
-      '.anon/apc.stat'              => 1,
-      '.anon/apc.localcache'        => 1,
-      '.anon/apc.localcache.size'   => 10000,
-      '.anon/apc.shm_size'          => '64M',
-      '.anon/apc.write_lock'        => 1,
-      '.anon/apc.num_files_hint'    => 10000,
-      '.anon/apc.user_entries_hint' => 40960,
-      '.anon/apc.enable_cli'        => 0,
+      '.anon/apc.enabled'                => 1,
+      '.anon/apc.cache_by_default'       => 1,
+      '.anon/apc.stat'                   => 1,
+      '.anon/apc.localcache'             => 1,
+      '.anon/apc.localcache.size'        => 10000,
+      '.anon/apc.shm_size'               => '64M',
+      '.anon/apc.write_lock'             => 1,
+      '.anon/apc.num_files_hint'         => 10000,
+      '.anon/apc.user_entries_hint'      => 40960,
+      '.anon/apc.enable_cli'             => 0,
       '.anon/apc.file_update_protection' => 1,
-      '.anon/apc.include_once_override' => 1
+      '.anon/apc.include_once_override'  => 1
     }
   }
 
