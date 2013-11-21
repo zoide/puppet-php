@@ -39,14 +39,12 @@
 #
 # Copyright 2012-2013 Christian "Jippi" Winther, unless otherwise noted.
 #
-class php::fpm(
+class php::fpm (
   $ensure   = $php::fpm::params::ensure,
   $package  = $php::fpm::params::package,
   $provider = $php::fpm::params::provider,
   $inifile  = $php::fpm::params::inifile,
-  $settings = $php::fpm::params::settings
-) inherits php::fpm::params {
-
+  $settings = $php::fpm::params::settings) inherits php::fpm::params {
   package { $package:
     ensure   => $ensure,
     provider => $provider;
@@ -57,12 +55,13 @@ class php::fpm(
     settings => $settings
   }
 
-  service { 'php5-fpm':
-    ensure    => running,
-    enable    => true,
-    restart   => 'service php5-fpm reload',
-    hasstatus => true,
-    require   => Package[$package]
+  if !defined(Service['php5-fpm']) {
+    service { 'php5-fpm':
+      ensure    => running,
+      enable    => true,
+      restart   => 'service php5-fpm reload',
+      hasstatus => true,
+      require   => Package[$package]
+    }
   }
-
 }
